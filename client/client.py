@@ -181,7 +181,7 @@ def loop():
   
   while a==1 :
     import time
-    time.sleep(3)
+    time.sleep(0.5)
 
     f=open('4ca4fe09f77101be32b3dd90c48382f0.txt','r')
     po=f.readline()
@@ -302,7 +302,7 @@ def loop():
             track = pygame.mixer.music.load('1.mp3')
 
 
-            pygame.mixer.music.play()
+            pygame.mixer.music.play(start=time)
 
 
     
@@ -373,7 +373,35 @@ def loop():
         with open('1.mp3', "wb") as code:     
             code.write(f.content)#下载完成
         print('下载成功')
-        pygame.mixer.music.play()
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        s.connect(('8.8.8.8', 80))
+        ip = s.getsockname()[0]
+ 
+
+    #print ('ip:',ip)
+        PORT = 40006
+        server_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        address = (ip, PORT)
+
+    
+
+
+    
+        server_socket.bind(address)
+    
+        receive_data, client_address = server_socket.recvfrom(1024)
+        data=receive_data.decode()
+        time=data.split('*')
+    #print(time)
+        time=time[-2]
+        time=float(time)
+    
+    #print(time)
+        time=time+po#####################################################!!!!!!!!
+    #print(time)
+        server_socket.close()
+        
+        pygame.mixer.music.play(start=time)
 
         
 
