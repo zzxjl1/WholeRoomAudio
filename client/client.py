@@ -361,7 +361,7 @@ def loop():
           
           os.remove('1.mp3')
           pygame.mixer.init()
-          track = pygame.mixer.music.load('1.mp3')
+          
           #pygame.mixer.music.play()
           
 
@@ -373,6 +373,7 @@ def loop():
         with open('1.mp3', "wb") as code:     
             code.write(f.content)#下载完成
         print('下载成功')
+        track = pygame.mixer.music.load('1.mp3')
         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         s.connect(('8.8.8.8', 80))
         ip = s.getsockname()[0]
